@@ -14,7 +14,7 @@ def preview():
     df = pd.read_csv('data/iris.csv')
     return render_template('preview.html', df_view=df)
 
-@app.route('/', methods=["POST"])
+@app.route('/predict', methods=["POST"])
 def analyze():
     if request.method == 'POST':
         petal_length = request.form['petal_length']
@@ -28,18 +28,18 @@ def analyze():
 
         ex1 = np.array(clean_data).reshape(1,-1)
 
-        if model_choice == 'logitmodel':
+        if model_choice == 'Logistic':
             logit_model = joblib.load('data/logit_iris.pkl')
             result_prediction = logit_model.predict(ex1)
-        elif model_choice == 'knnmodel':
+        elif model_choice == 'KNN':
             knn_model = joblib.load('data/knn_iris.pkl')
             result_prediction = knn_model.predict(ex1)
-        elif model_choice == 'svmmodel':
+        elif model_choice == 'SVM':
             svm_model = joblib.load('data/svm_iris.pkl')
             result_prediction = svm_model.predict(ex1)
 
     
-    return render_template('index.html', petal_width=petal_width, petal_length=petal_length, sepal_length=sepal_length, sepal_width=sepal_width,result_prediction=result_prediction,model_selected=model_choice)
+    return render_template('predict.html', petal_width=petal_width, petal_length=petal_length, sepal_length=sepal_length, sepal_width=sepal_width,result_prediction=result_prediction,model_selected=model_choice)
 
 if __name__ == '__main__':
     app.run(debug=True)

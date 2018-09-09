@@ -1,0 +1,103 @@
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iris Predictor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  </head>
+  <body>
+      <div class="block">
+          <section class="hero is-dark is-bold">
+              <div class="hero-body">
+                  <div class="container has-text-centered">
+                      <h1 class="title">Iris Species Predictor</h1>
+                      <h2 class="subtitle">ML Web App</h2>
+                  </div><br>
+                  <div class="container has-text-centered">
+                        <a href="{{url_for('index')}}" class="button is-info is-rounded has-text-centered">Back</a>
+                        <a href="{{url_for('preview')}}" class="button is-link is-rounded has-text-centered">View Dataset</a>
+                  </div>
+
+              </div>
+          </section>
+      </div>
+      <article class="message is-primary">
+          <div class="message-header">
+              Prediction
+          </div>
+          <div class="message-body">
+            <div class="card">
+                <!--
+                <header class="card-header">
+                    <p class="card-header-title is-centered">Prediction</p>
+                </header> -->
+                <div class="container has-text-centered">
+                        <div class="card-image">
+                                <figure class="image is-3by2">
+                                    {% if result_prediction == ['versicolor'] %}
+                                      <img src="../static/iris_versicolor.jpg" alt="" height="500" width="500">
+            
+                                      {% elif result_prediction == ['setosa'] %}
+                                      <img src="../static/iris_setosa.jpg" alt="" height="500" width="500">
+            
+                                      {% elif result_prediction == ['virginica'] %}
+                                      <img src="../static/iris_virginica.jpg" alt="" height="500" width="500">
+            
+                                      {% else %}
+                                      <p></p>
+            
+                                      {% endif %}
+                                </figure>
+                            </div>
+                </div>
+
+                <div class="card-content">
+                  <div class="media-content">
+                      {% if result_prediction == ['versicolor'] %}
+                      <p class="title">I think it is Iris Versicolor</p>
+                      <p class="title is-4">Using {{ model_selected }} Model</p>
+                        
+                        {% elif result_prediction == ['setosa'] %}
+                        <p class="title">I think it is Iris Setosa</p>
+                        <p class="title is-4">Using {{ model_selected }} Model </p>
+
+                        {% elif result_prediction == ['virginica'] %}
+                        <p class="title">I think it is Iris Virginica</p>
+                        <p class="title is-4">Using {{ model_selected }} Model </p>
+
+                        {% else %}
+                        <p></p>
+
+                        {% endif %}
+                  </div>
+                  <!--
+                  <div class="content">
+                      Using {{ model_selected }} 
+                  </div>
+              -->
+                </div>
+                <footer class="card-footer">
+                    <p class="card-footer-item">Sepal Length: {{ sepal_length }} </p>
+                    <p class="card-footer-item">Sepal Width: {{ sepal_width }}</p>
+                    <p class="card-footer-item">Petal Length: {{ petal_length }} </p>
+                    <p class="card-footer-item">Petal Width: {{ petal_width }} </p>
+                </footer>
+            </div>
+          </div>
+      </article>    
+      <footer class="footer">
+            <div class="content has-text-centered">
+              <p>
+                <strong>Anmol Goel | 2018 </strong>.<br>
+                <a href="https://github.com/agoel00">Github</a> | <a href="https://anmolgoel.com">Portfolio</a>.
+              </p>
+            </div>
+          </footer>
+  </body>
+</html>
+
+{% endblock %}

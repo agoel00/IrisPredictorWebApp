@@ -25,120 +25,83 @@
               </div>
           </section>
       </div>
-      <div class="columns">
-          <div class="column">
-              <div class="card">
-                  <header class="card-header">
-                      <p class="card-header-title is-centered">Inputs</p>
-                  </header>
-                  <div class="card-content">
-                      <form action="{{ url_for('analyze') }}" method="POST">
-                        <div class="field">
-                            <label for="Sepal Length" class="label">Sepal Length</label>
-                            <div class="control">
-                                <input type="number" name="sepal_length" class="input" placeholder="Number between 4 and 8" min="4" max="8" step="0.1">
+      <article class="message is-primary">
+          <div class="message-header">
+              <p>Inputs</p>
+          </div>
+          <div class="message-body">
+            <div class="card">
+                <!--
+                <header class="card-header">
+                    <p class="card-header-title is-centered">Inputs</p>
+                </header> -->
+                <div class="card-content">
+                    <form action="{{ url_for('analyze') }}" method="POST">
+                        <div class="columns">
+                            <div class="column">
+                                    <div class="field">
+                                            <label for="Sepal Length" class="label">Sepal Length</label>
+                                            <div class="control">
+                                                <input type="number" name="sepal_length" class="input" placeholder="Number between 4 and 8" min="4" max="8" step="0.1">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="Sepal Width" class="label">Sepal Width</label>
+                                            <div class="control">
+                                                <input type="number" name="sepal_width" class="input" placeholder="Number between 2 and 5" min="2" max="5" step="0.1">
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="column">
+                                    <div class="field">
+                                            <label for="Petal Length" class="label">Petal Length</label>
+                                            <div class="control">
+                                                <input type="number" name="petal_length" class="input" placeholder="Number between 0 and 7" min="0" max="7" step="0.1">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="Petal Width" class="label">Petal Width</label>
+                                            <div class="control">
+                                                <input type="number" name="petal_width" class="input" placeholder="Number between 0 and 3" min="0" max="3" step="0.1">
+                                            </div>
+                                        </div>
                             </div>
                         </div>
-                        <div class="field">
-                            <label for="Sepal Width" class="label">Sepal Width</label>
-                            <div class="control">
-                                <input type="number" name="sepal_width" class="input" placeholder="Number between 2 and 5" min="2" max="5" step="0.1">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label for="Petal Length" class="label">Petal Length</label>
-                            <div class="control">
-                                <input type="number" name="petal_length" class="input" placeholder="Number between 0 and 7" min="0" max="7" step="0.1">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label for="Petal Width" class="label">Petal Width</label>
-                            <div class="control">
-                                <input type="number" name="petal_width" class="input" placeholder="Number between 0 and 3" min="0" max="3" step="0.1">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="field">
-                            <label for="role" class="label">Select Model</label>
-                            <div class="control">
-                                <div class="select is-primary">
-                                    <select name="model_choice" id="role">
-                                        <option value="logitmodel">Logistic Regression</option>
-                                        <option value="knnmodel">K Nearest Neighbours</option>
-                                        <option value="svmmodel">SVM</option>
-                                    </select>
+
+
+                      <br>
+                      <div class="container has-text-centered">
+                            <div class="field">
+                                    <label for="role" class="label">Select Model</label>
+                                    <div class="control">
+                                        <div class="container has-text-centered">
+                                                <div class="select is-primary">
+                                                        <select name="model_choice" id="role">
+                                                            <option value="Logistic">Logistic Regression</option>
+                                                            <option value="KNN">K Nearest Neighbours</option>
+                                                            <option value="SVM">SVM</option>
+                                                        </select>
+                                                    </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <br>
-                        <button class="button is-primary" type="submit">Predict</button>
-                        <button class="button" type="reset">Clear</button>
-                      </form>
-                  </div>
-              </div>
+                                <br>
+                                <button class="button is-primary" type="submit">Predict</button>
+                                <button class="button" type="reset">Clear</button>
+                      </div>
+
+                    </form>
+                </div>
+            </div>
           </div>
-          <div class="column">
-              <div class="card">
-                  <header class="card-header">
-                      <p class="card-header-title is-centered">Prediction</p>
-                  </header>
-                  <div class="card-image">
-                      <figure class="image is-3by2">
-                          {% if result_prediction == ['versicolor'] %}
-                            <img src="../static/iris_versicolor.jpg" alt="" height="500" width="500">
+      </article>
 
-                            {% elif result_prediction == ['setosa'] %}
-                            <img src="../static/iris_setosa.jpg" alt="" height="500" width="500">
-
-                            {% elif result_prediction == ['virginica'] %}
-                            <img src="../static/iris_virginica.jpg" alt="" height="500" width="500">
-
-                            {% else %}
-                            <p></p>
-
-                            {% endif %}
-                      </figure>
-                  </div>
-                  
-                  <div class="card-content">
-                    <div class="media-content">
-                        {% if result_prediction == ['versicolor'] %}
-                        <p class="title">I think it is Iris Versicolor</p>
-                        <p class="title is-4">Using {{ model_selected }}</p>
-                          
-                          {% elif result_prediction == ['setosa'] %}
-                          <p class="title">I think it is Iris Setosa</p>
-                          <p class="title is-4">Using {{ model_selected }} </p>
-
-                          {% elif result_prediction == ['virginica'] %}
-                          <p class="title">I think it is Iris Virginica</p>
-                          <p class="title is-4">Using {{ model_selected }} </p>
-
-                          {% else %}
-                          <p></p>
-
-                          {% endif %}
-                    </div>
-                    <!--
-                    <div class="content">
-                        Using {{ model_selected }} 
-                    </div>
-                -->
-                  </div>
-                  <footer class="card-footer">
-                      <p class="card-footer-item">Sepal Length: {{ sepal_length }} </p>
-                      <p class="card-footer-item">Sepal Width: {{ sepal_width }}</p>
-                      <p class="card-footer-item">Petal Length: {{ petal_length }} </p>
-                      <p class="card-footer-item">Petal Width: {{ petal_width }} </p>
-                  </footer>
-              </div>
-          </div>
-      </div>
       <footer class="footer">
             <div class="content has-text-centered">
               <p>
                 <strong>Anmol Goel | 2018 </strong>.<br>
-                <a href="https://github.com/agoel00">Github</a>.<a href="https://anmolgoel.com">Portfolio</a>.
+                <a href="https://github.com/agoel00">Github</a> | <a href="https://anmolgoel.com">Portfolio</a>.
               </p>
             </div>
           </footer>
