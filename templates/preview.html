@@ -1,0 +1,42 @@
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iris Predictor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  </head>
+  <body>
+    <div class="block">
+        <section class="hero is-dark is-bold">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title">Iris Species Predictor</h1>
+                    <h2 class="subtitle">ML Web App</h2>
+                </div><br>
+                <div class="container has-text-centered">
+                    <a href="{{ url_for('index') }}" class="button is-info is-rounded">Back</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="block">
+        <div class="container has-text-centered">
+            {{ df_view.to_html(classes="table striped", na_rep="-") | safe }}
+        </div>
+    </div>
+    <footer class="footer">
+            <div class="content has-text-centered">
+              <p>
+                <strong>Anmol Goel | 2018 </strong>.<br>
+                <a href="https://github.com/agoel00">Github</a>.<a href="https://anmolgoel.com">Portfolio</a>.
+              </p>
+            </div>
+          </footer>
+  </body>
+</html>
+
+{% endblock %}
