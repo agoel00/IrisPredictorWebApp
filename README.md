@@ -4,7 +4,7 @@
 You can find a live version of the site [here](http://agoel00.pythonanywhere.com)
 
 
-[](demo.gif)
+![](demo.gif)
 
 It uses 3 trained ML models - 
 1. Logistic Regression
