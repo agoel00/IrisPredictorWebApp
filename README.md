@@ -3,8 +3,7 @@
 
 You can find a live version of the site [here](http://agoel00.pythonanywhere.com)
 
-
-[](demo.gif)
+<img src="demo.gif" height="450" width="250">
 
 It uses 3 trained ML models - 
 1. Logistic Regression
