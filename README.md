@@ -13,7 +13,14 @@ It uses 3 trained ML models -
 
 These models have been trained on my local machine and saved using pickle library in Python. Then the saved models are called using Flask.
 
-BulmaCSS for Frontend.
+BulmaCSS is used for the frontend.
+
+## Requirements
+1. flask
+2. scikit-learn
+3. pandas
+4. numpy
+
 
 To run the app locally, enter these commands in your terminal: 
 
