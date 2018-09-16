@@ -5,6 +5,7 @@ You can find a live version of the site [here](http://agoel00.pythonanywhere.com
 
 <img src="demo.gif" height="450" width="250">
 
+## Introduction 
 
 It uses 3 trained ML models - 
 1. Logistic Regression
@@ -21,6 +22,7 @@ BulmaCSS is used for the frontend.
 3. pandas
 4. numpy
 
+## Instructions
 
 To run the app locally, enter these commands in your terminal: 
 
